@@ -13,9 +13,8 @@ export class Sidebar implements OnInit {
   lastName: string = '';
 
   ngOnInit(): void {
-    // sera connecté au AuthService quand US06 sera terminée
-    this.userRole = 'Collaborator'; // temporaire
-    this.firstName = 'Kevin'; // temporaire
-    this.lastName = 'Brogniez'; // temporaire
+    this.userRole = ''
+    this.firstName = ''; 
+    this.lastName = ''
   }
 }
