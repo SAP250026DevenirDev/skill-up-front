@@ -1,0 +1,37 @@
+<nav class="flex items-center justify-between bg-gray-800 px-6 py-4 shadow-md">
+
+ <div class="w-9 h-9 rounded-full bg-gray-500 flex items-center justify-center">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-white" viewBox="0 0 24 24">
+    <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+  </svg>
+</div>
+
+  <div class="flex gap-6">
+    @if (userRole === 'Collaborator') {
+      <a routerLink="/profil" class="text-white hover:text-blue-400 transition">Profil</a>
+      <a routerLink="/skills" class="text-white hover:text-blue-400 transition">Skills Manager</a>
+      <a routerLink="/mentoring" class="text-white hover:text-blue-400 transition">Mentorat</a>
+    }
+
+    @if (userRole === 'Manager') {
+      <a routerLink="/profil" class="text-white hover:text-blue-400 transition">Profil</a>
+      <a routerLink="/search" class="text-white hover:text-blue-400 transition">Search</a>
+      <a routerLink="/historic" class="text-white hover:text-blue-400 transition">Historic Skills</a>
+    }
+
+    @if (userRole === 'Admin') {
+      <a routerLink="/profil" class="text-white hover:text-blue-400 transition">Profil</a>
+      <a routerLink="/skills-manager" class="text-white hover:text-blue-400 transition">Skills Manager</a>
+      <a routerLink="/users-manager" class="text-white hover:text-blue-400 transition">Users Manager</a>
+    }
+  </div>
+
+  <button (click)="logout()" 
+    class="flex items-center gap-2 text-white hover:text-red-400 transition">
+    <span>Déconnexion</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1" />
+    </svg>
+  </button>
+
+</nav>
