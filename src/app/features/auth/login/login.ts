@@ -41,7 +41,7 @@ private readonly fb = inject(FormBuilder);
     .subscribe({
       next: (response) => {
         console.log('réponse API :', response);
-        this.router.navigate(['']);
+        this.router.navigate(['profil']);
       },
       error: (err) => {
         console.log('erreur :', err);
