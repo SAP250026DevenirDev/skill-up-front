@@ -51,6 +51,7 @@ private decodeToken(token: TokenInfo): void {
   }
 
   isLoggedIn(): boolean {
+    
     return this.connectedUser() !== null; // true si quelqu'un est connecté
   }
 

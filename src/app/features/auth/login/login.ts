@@ -32,7 +32,7 @@ private readonly fb = inject(FormBuilder);
         //next: () => this.router.navigate(['']),
         //error: () => this.errorMessage.set('Email ou mot de passe incorrect')
       //});
-       console.log('formulaire valide ?', this.form.valid);
+  console.log('formulaire valide ?', this.form.valid);
   console.log('valeurs :', this.form.value);
   
   if (this.form.invalid) return;
