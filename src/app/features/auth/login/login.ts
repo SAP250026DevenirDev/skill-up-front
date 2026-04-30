@@ -21,17 +21,33 @@ private readonly fb = inject(FormBuilder);
 
   form = this.fb.group({
     email: ['', [Validators.required, emailValidators()]],
-    password: ['', [Validators.required, Validators.minLength(4)]]
+    hashedPassword: ['', [Validators.required, Validators.minLength(4)]]
   });
 
   onSubmit(): void {
-    if (this.form.invalid) return;
+    //if (this.form.invalid) return;
 
-    this.authService.login(this.form.value as UserLogin)
-      .subscribe({
-        next: () => this.router.navigate(['']),
-        error: () => this.errorMessage.set('Email ou mot de passe incorrect')
-      });
+    //this.authService.login(this.form.value as UserLogin)
+     // .subscribe({
+        //next: () => this.router.navigate(['']),
+        //error: () => this.errorMessage.set('Email ou mot de passe incorrect')
+      //});
+       console.log('formulaire valide ?', this.form.valid);
+  console.log('valeurs :', this.form.value);
+  
+  if (this.form.invalid) return;
+
+  this.authService.login(this.form.value as UserLogin)
+    .subscribe({
+      next: (response) => {
+        console.log('réponse API :', response);
+        this.router.navigate(['']);
+      },
+      error: (err) => {
+        console.log('erreur :', err);
+        this.errorMessage.set('Email ou mot de passe incorrect');
+      }
+    });
   }
 }
 

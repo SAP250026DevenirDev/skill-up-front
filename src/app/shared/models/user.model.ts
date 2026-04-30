@@ -1,6 +1,6 @@
 export interface UserLogin {
   email: string;
-  password: string;
+  hashedPassword: string;
 }
 
 
