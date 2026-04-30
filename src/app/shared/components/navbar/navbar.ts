@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +9,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './navbar.css'
 })
 export class Navbar implements OnInit {
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
 
   userRole: string = '';
 
@@ -17,6 +20,7 @@ export class Navbar implements OnInit {
   }
 
   logout(): void {
-    // sera connecté au AuthService quand US06 sera terminée
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }
