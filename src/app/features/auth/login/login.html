@@ -26,9 +26,22 @@
       <p class="bg-red-100 text-red-600 text-sm p-3 rounded mb-4">{{ errorMessage() }}</p>
       }
 
-      <button type="submit" [disabled]="form.invalid"
-        class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition font-medium disabled:opacity-50">
-        Se connecter
+                            <!--Désactive le bouton si le formulaire est invalide ou si une requête est en cours -->
+      <button type="submit" [disabled]="form.invalid || isLoading()" class="w-full bg-blue-600 text-white py-2 
+      rounded hover:bg-blue-700 transition font-medium disabled:opacity-50 flex items-center justify-center gap-2">
+        
+      <!--Affichage du spinner seulement si isLoading est true.-->
+        @if (isLoading()) {
+          <!-- Spinner en svg "http://www.w3.org/2000/svg"-->
+          <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+          </svg>
+          Connexion...
+        } @else { <!--Si pas de chargement: affiche texte normal -->
+          Se connecter
+        }
+
       </button>
     </form>
   </div>
