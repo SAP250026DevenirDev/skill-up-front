@@ -18,6 +18,7 @@ private readonly router = inject(Router);
 private readonly fb = inject(FormBuilder);
 
   errorMessage = signal<string | null>(null);
+  isLoading = signal<boolean>(false);
 
   form = this.fb.group({
     email: ['', [Validators.required, emailValidators()]],
@@ -25,29 +26,38 @@ private readonly fb = inject(FormBuilder);
   });
 
   onSubmit(): void {
-    //if (this.form.invalid) return;
-
-    //this.authService.login(this.form.value as UserLogin)
-     // .subscribe({
-        //next: () => this.router.navigate(['']),
-        //error: () => this.errorMessage.set('Email ou mot de passe incorrect')
-      //});
-  console.log('formulaire valide ?', this.form.valid);
-  console.log('valeurs :', this.form.value);
-  
   if (this.form.invalid) return;
+
+  this.isLoading.set(true);
+  this.errorMessage.set(null);
 
   this.authService.login(this.form.value as UserLogin)
     .subscribe({
-      next: (response) => {
-        console.log('réponse API :', response);
-        this.router.navigate(['profil']);
+      next: () => {
+        this.isLoading.set(false);
+
+        if (!this.authService.isActive()) {
+          this.authService.logout();
+          this.errorMessage.set('Votre compte est désactivé, contactez un administrateur');//Affiche un message d'erreur si le compte n'est pas actif
+          return;
+        }
+
+        if (!this.authService.isPasswordChanged()) {
+          this.router.navigate(['']); //Redirige vers la page de changement de mot de passe
+          return;
+        }
+
+        this.router.navigate(['/profil']);
       },
       error: (err) => {
-        console.log('erreur :', err);
-        this.errorMessage.set('Email ou mot de passe incorrect');
+        this.isLoading.set(false);
+        if (err.status === 401) {
+          this.errorMessage.set('Email ou mot de passe incorrect');
+        } else {
+          this.errorMessage.set('Une erreur est survenue, réessayez plus tard');
+        }
       }
     });
-  }
+}
 }
 

@@ -20,6 +20,8 @@ export class AuthService {
 }
 
   connectedUser = signal<JwtPayload | null>(null);//Signal qui contient l'utilisateur connecté.
+  isActive = signal<boolean>(false);           
+  isPasswordChanged = signal<boolean>(false);
 
   login(credentials: UserLogin): Observable<TokenInfo> {
   return this.http.post<TokenInfo>(`${environment.apiUrl}/auth/login`, credentials)
@@ -36,10 +38,12 @@ private decodeToken(token: TokenInfo): void {
     email: claims.email,
     role: claims.role,
     exp: claims.exp,
-    token: token.token
+    token: token.token,
   };
 
   this.connectedUser.set(payload);
+  this.isActive.set(token.isActive);
+  this.isPasswordChanged.set(token.isPasswordChanged);
   this.storage.setLocal<string>('token', token.token);
   this.storage.setLocal<JwtPayload>('payload', payload);//Sauvegarde le token et le payload 
   }
