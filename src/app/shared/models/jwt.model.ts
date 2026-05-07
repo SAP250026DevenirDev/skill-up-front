@@ -1,5 +1,8 @@
 export interface TokenInfo {
   token: string;
+  isPasswordChanged: boolean;
+  isActive: boolean; 
+
 }
 
 export interface JwtPayload {
