@@ -20,12 +20,14 @@ private readonly fb = inject(FormBuilder);
   errorMessage = signal<string | null>(null);
   isLoading = signal<boolean>(false);
 
+
   form = this.fb.group({
     email: ['', [Validators.required, emailValidators()]],
     hashedPassword: ['', [Validators.required, Validators.minLength(4)]]
   });
 
   onSubmit(): void {
+
   if (this.form.invalid) return;
 
   this.isLoading.set(true);

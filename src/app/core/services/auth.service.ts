@@ -23,6 +23,7 @@ export class AuthService {
   isActive = signal<boolean>(false);           
   isPasswordChanged = signal<boolean>(false);
 
+
   login(credentials: UserLogin): Observable<TokenInfo> {
   return this.http.post<TokenInfo>(`${environment.apiUrl}/auth/login`, credentials)
   .pipe(
@@ -44,6 +45,7 @@ private decodeToken(token: TokenInfo): void {
   this.connectedUser.set(payload);
   this.isActive.set(token.isActive);
   this.isPasswordChanged.set(token.isPasswordChanged);
+
   this.storage.setLocal<string>('token', token.token);
   this.storage.setLocal<JwtPayload>('payload', payload);//Sauvegarde le token et le payload 
   }
