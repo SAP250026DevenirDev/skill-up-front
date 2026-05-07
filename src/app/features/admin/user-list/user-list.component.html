@@ -1,0 +1,48 @@
+<div class="p-6">
+  <h2 class="text-2xl font-bold mb-4">Gestion des Utilisateurs</h2>
+
+  <div class="overflow-x-auto shadow-md rounded-lg">
+    <table class="w-full text-left bg-white">
+      <thead class="bg-gray-100 uppercase text-sm">
+        <tr>
+          <th class="p-4">Utilisateur</th>
+          <th class="p-4">Statut</th>
+          <th class="p-4 text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of users(); track user.id) {
+          <tr class="border-b hover:bg-gray-50">
+            <td class="p-4">{{ user.email }}</td>
+            <td class="p-4">
+              @if (user.isActive) {
+                <span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs">Actif</span>
+              } @else {
+                <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs">Désactivé</span>
+              }
+            </td>
+            <td class="p-4 text-right">
+              <button 
+                (click)="onDisable(user.id)"
+                [disabled]="isLoading() || !user.isActive"
+                class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md disabled:opacity-50 transition-colors">
+                
+                @if (isLoading()) {
+                  Chargement...
+                } @else {
+                  Désactiver
+                }
+              </button>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="3" class="p-10 text-center text-gray-500">
+              Aucun utilisateur à afficher.
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
