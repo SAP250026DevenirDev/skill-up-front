@@ -18,7 +18,7 @@ export class New {
       this.newSkillForm = this.fb.group({
         name: ['', Validators.required],
         description: [''],
-        category: ['', Validators.required]
+        category: ['', Validators.required],
       })
     }
   
