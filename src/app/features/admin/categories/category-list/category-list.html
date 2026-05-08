@@ -10,19 +10,17 @@
       </tr>
     </thead>
     <tbody>
-      @for (category of categories; track category.id) {
-        <tr>
-          <td class="border px-4 py-2">{{ category.name }}</td>
-          <td class="border px-4 py-2">{{ category.description }}</td>
-          <td class="border px-4 py-2 text-center">
-            <button
-              (click)="goToUpdate(category.id)"
-              class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
-              Edit
-            </button>
-          </td>
-        </tr>
-      }
+      <tr *ngFor="let category of categories">
+        <td class="border px-4 py-2">{{ category.name }}</td>
+        <td class="border px-4 py-2">{{ category.description }}</td>
+        <td class="border px-4 py-2 text-center">
+          <button
+            (click)="goToUpdate(category.id)"
+            class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+            Edit
+          </button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
