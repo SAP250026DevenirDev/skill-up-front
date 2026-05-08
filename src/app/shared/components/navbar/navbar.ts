@@ -9,7 +9,7 @@ import { AuthService } from '../../../core/services/auth.service';
   styleUrl: './navbar.css'
 })
 export class Navbar implements OnInit {
-  private readonly authService = inject(AuthService);
+  public readonly authService = inject(AuthService);
   private readonly router = inject(Router);
 
   userRole: string = '';

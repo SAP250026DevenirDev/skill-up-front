@@ -6,19 +6,19 @@ import { Injectable } from '@angular/core';
 export class StorageService {
 
   setLocal<T>(key: string, value: T): void {
-    localStorage.setItem(key, JSON.stringify(value));
+    sessionStorage.setItem(key, JSON.stringify(value));
   }
 
   getLocal<T>(key: string): T | null {
-    const data = localStorage.getItem(key);
+    const data = sessionStorage.getItem(key);
     return data ? JSON.parse(data) as T : null;
   }
 
   removeLocal(key: string): void {
-    localStorage.removeItem(key);
+    sessionStorage.removeItem(key);
   }
 
   clearLocal(): void {
-    localStorage.clear();
+    sessionStorage.clear();
   }
 }
