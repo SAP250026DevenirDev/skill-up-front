@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { UserLogin } from '../../shared/models/user.model';
+import { UserLogin, UserRegister } from '../../shared/models/user.model';
 import { JwtPayload, TokenInfo } from '../../shared/models/jwt.model';
 import { jwtDecode } from 'jwt-decode';
 import { environment } from '@env/environment';
@@ -58,6 +58,9 @@ private decodeToken(token: TokenInfo): void {
 
   isLoggedIn(): boolean {
     return this.connectedUser() !== null; // true si quelqu'un est connecté
+  }
+  signup(signup: UserRegister): Observable<void> {
+    return this.http.post<void>(`${environment.apiUrl}/Auth/register`, signup)
   }
 
 }
