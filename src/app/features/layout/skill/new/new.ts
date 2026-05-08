@@ -12,6 +12,14 @@ export class New {
 
   newSkillForm: FormGroup;
 
+  categoryList = [
+    { id: 0, cat: 'Backend'},
+    { id: 1, cat: 'Frontend'},
+    { id: 2, cat: 'DevOps'},
+    { id: 3, cat: 'Security'},
+    { id: 4, cat: 'Soft Skills'}
+  ]
+
   constructor(
     private fb: FormBuilder,
     private skillService: SkillService){
