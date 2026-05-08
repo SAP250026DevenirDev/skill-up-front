@@ -8,17 +8,15 @@ export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' }, 
     { path: 'login', component: Login },
     { path: 'profil', component: Profil, canActivate: [authGuardGuard] },
-    { path: 'register', component: Register}
-];
-
-   {
-  path: 'skills-manager',
-  children: [
+    { path: 'register', component: Register},
     {
-      path: 'categories',
-      loadChildren: () => import('./features/admin/categories/categories.routes')
+      path: 'skills-manager',
+      children: [
+      {
+       path: 'categories',
+       loadChildren: () => import('./features/admin/categories/categories.routes')
         .then(r => r.routes)
-    }
+      }
   ]
 }
 ];

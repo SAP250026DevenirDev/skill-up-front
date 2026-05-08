@@ -18,4 +18,8 @@ export class CategoryService {
   update(id: string, data: { name: string; description?: string }): Observable<any> {
     return this.http.patch(`${this.apiUrl}/${id}`, data);
   }
+  
+  getAll(): Observable<any[]> {
+  return this.http.get<any[]>(this.apiUrl);
+}
 }
