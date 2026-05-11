@@ -20,7 +20,7 @@ export class AddCategory {
   ) {
     this.addForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
-      description: ['']
+      description: ['',  [Validators.maxLength(500)]]
     });
   }
 
