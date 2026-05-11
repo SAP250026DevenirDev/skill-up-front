@@ -45,7 +45,7 @@ private readonly fb = inject(FormBuilder);
         }
 
         if (!this.authService.isPasswordChanged()) {
-          this.router.navigate(['']); //Redirige vers la page de changement de mot de passe
+          this.router.navigate(['ChangePassword']); //Redirige vers la page de changement de mot de passe
           return;
         }
 
