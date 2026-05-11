@@ -8,9 +8,12 @@ import { environment } from '../../../environments/environment';
 })
 export class AdminService {
   private readonly http = inject(HttpClient);
-  private readonly apiUrl = `${environment.apiUrl}/admin/users`;
+  private readonly apiUrl = `${environment.apiUrl}/Admin/users`;
 
-  // La méthode qui va appeler le DELETE 
+  getUsers(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
+
   disableUser(userId: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${userId}`);
   }

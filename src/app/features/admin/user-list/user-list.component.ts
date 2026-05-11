@@ -21,8 +21,15 @@ export class UserListComponent implements OnInit {
   }
 
   loadUsers(): void {
-    // TODO: Appeler une méthode "getUsers" du service plus tard
-    // Pour l'instant, on imagine que la liste est chargée
+   this.isLoading.set(true);
+    this.adminService.getUsers().subscribe({
+      next: (data) => {
+        console.log(data)
+        this.users.set(data);
+        this.isLoading.set(false);
+      },
+      error: () => this.isLoading.set(false)
+    });
   }
 
   onDisable(userId: string): void {

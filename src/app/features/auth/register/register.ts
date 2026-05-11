@@ -18,18 +18,18 @@ export class Register {
   registerForm: FormGroup;
   formInvalid = false;
 
-  constructor(private fb: FormBuilder){
+  constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.max(250), emailValidators()]],
       firstName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-      lastName: ['', [Validators.required,  Validators.min(2), Validators.max(50)]],
+      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       role: ['', [Validators.required]]
     });
   }
 
-  OnSubmit(): void{
-    if (this.registerForm.valid){
-      const register : UserRegister = {
+  OnSubmit(): void {
+    if (this.registerForm.valid) {
+      const register: UserRegister = {
         email: this.registerForm.value.email,
         firstName: this.registerForm.value.firstName,
         lastName: this.registerForm.value.lastName,
@@ -39,13 +39,21 @@ export class Register {
       this._authService.signup(register).subscribe({
         next: () => {
           alert('Register réussis');
+          this.registerForm.reset({
+            email: '',
+            firstName: '',
+            lastName: '',
+            role: ''
+          });
+          this.formInvalid = false;
+           console.log(this.registerForm.value)
         },
         error: () => {
           this.formInvalid = true;
         }
       })
     }
-    else{
+    else {
       this.formInvalid = true;
     }
   }
