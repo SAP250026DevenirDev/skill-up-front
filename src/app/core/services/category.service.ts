@@ -22,4 +22,7 @@ export class CategoryService {
   getAll(): Observable<any[]> {
   return this.http.get<any[]>(this.apiUrl);
 }
+  add(data: { name: string; description: string }): Observable<any> {
+  return this.http.post<any>(this.apiUrl, data);
+}
 }
