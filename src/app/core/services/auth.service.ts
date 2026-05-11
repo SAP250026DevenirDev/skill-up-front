@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { UserLogin, UserRegister } from '../../shared/models/user.model';
+import { PasswordRequestUpdateDto, UserLogin, UserRegister } from '../../shared/models/user.model';
 import { JwtPayload, TokenInfo } from '../../shared/models/jwt.model';
 import { jwtDecode } from 'jwt-decode';
 import { environment } from '@env/environment';
@@ -61,6 +61,9 @@ private decodeToken(token: TokenInfo): void {
   }
   signup(signup: UserRegister): Observable<void> {
     return this.http.post<void>(`${environment.apiUrl}/Auth/register`, signup)
+  }
+  passwordChange(id: string,passwordChange: PasswordRequestUpdateDto): Observable<void>{
+    return this.http.patch<void>(`${environment.apiUrl}/User/passwordChange/${id}`, passwordChange)
   }
 
 }

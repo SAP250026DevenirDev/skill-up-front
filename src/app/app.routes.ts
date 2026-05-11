@@ -3,8 +3,10 @@ import { Login } from './features/auth/login/login';
 import { authGuardGuard } from './core/guards/auth-guard';
 import { Profil } from './shared/accueil/profil/profil';
 import { Register } from './features/auth/register/register';
+import { ChangePassword } from './features/auth/change-password/change-password';
 
 export const routes: Routes = [
+<<<<<<< feature/US09-front-add-category
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: Login },
   { path: 'profil', component: Profil, canActivate: [authGuardGuard] },
@@ -12,6 +14,16 @@ export const routes: Routes = [
   {
     path: 'skills-manager',
     children: [
+=======
+    { path: '', redirectTo: 'login', pathMatch: 'full' }, 
+    { path: 'login', component: Login },
+    { path: 'profil', component: Profil, canActivate: [authGuardGuard] },
+    { path: 'register', component: Register},
+    { path: 'ChangePassword', component: ChangePassword},
+    {
+      path: 'skills-manager',
+      children: [
+>>>>>>> develop
       {
         path: '',
         redirectTo: 'categories',
