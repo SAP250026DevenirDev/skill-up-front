@@ -15,10 +15,15 @@ export const routes: Routes = [
       path: 'skills-manager',
       children: [
       {
-       path: 'categories',
-       loadChildren: () => import('./features/admin/categories/categories.routes')
-        .then(r => r.routes)
+        path: '',
+        redirectTo: 'categories',
+        pathMatch: 'full'
+      },
+      {
+        path: 'categories',
+        loadChildren: () => import('./features/admin/categories/categories.routes')
+          .then(r => r.routes)
       }
-  ]
-}
+    ]
+  },
 ];
