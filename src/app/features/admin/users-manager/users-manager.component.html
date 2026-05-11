@@ -1,14 +1,13 @@
-<div class="user-management-container">
-  <nav class="sub-nav">
-    <a routerLink="list" routerLinkActive="active-tab" class="nav-tab">
+<div class="user-management-container ">
+  <nav class="sub-nav flex justify-center gap-4 p-6">
+    <a routerLink="/users-manager/list" routerLinkActive="active-tab" class="flex justify-center px-6 py-3 bg-gray-500 text-white rounded">
       <i class="fa-solid fa-list"></i> Liste des utilisateurs
     </a>
-    <a routerLink="create" routerLinkActive="active-tab" class="nav-tab">
-      <i class="fa-solid fa-user-plus"></i> Créer un utilisateur
+    <a routerLink="/users-manager/register" routerLinkActive="active-tab" class="flex justify-center px-6 py-3 bg-gray-500 text-white rounded">
+      <i class="fa-solid fa-user-plus"></i> Nouvel utilisateur
     </a>
   </nav>
-
   <div class="sub-content">
-    <router-outlet></router-outlet>
+    <router-outlet />
   </div>
 </div>
