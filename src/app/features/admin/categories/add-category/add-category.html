@@ -1,0 +1,37 @@
+<div class="p-6">
+  <h2 class="text-xl font-bold mb-4">Ajouter une catégorie</h2>
+
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <!-- Nom -->
+    <div class="mb-4">
+      <label class="block mb-1">Nom</label>
+      <input
+        formControlName="name"
+        type="text"
+        class="border px-3 py-2 rounded w-full"
+        placeholder="Nom de la catégorie"
+      />
+      @if (addForm.get('name')?.invalid && addForm.get('name')?.touched) {
+        <span class="text-red-500 text-sm">Le nom est requis (3-100 caractères)</span>
+      }
+    </div>
+
+    <!-- Description -->
+    <div class="mb-4">
+      <label class="block mb-1">Description</label>
+      <textarea
+        formControlName="description"
+        class="border px-3 py-2 rounded w-full"
+        placeholder="Description"
+      ></textarea>
+    </div>
+
+    <!-- Submit -->
+    <button
+      type="submit"
+      class="bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-600 transition"
+    >
+      Ajouter
+    </button>
+  </form>
+</div>
