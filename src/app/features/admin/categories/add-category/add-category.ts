@@ -32,4 +32,7 @@ export class AddCategory {
       });
     }
   }
+  onCancel(): void {
+  this.router.navigate(['/skills-manager/categories']);
+}
 }
