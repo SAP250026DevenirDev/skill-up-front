@@ -5,18 +5,23 @@ import { Profil } from './shared/accueil/profil/profil';
 import { Register } from './features/auth/register/register';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full' }, 
-    { path: 'login', component: Login },
-    { path: 'profil', component: Profil, canActivate: [authGuardGuard] },
-    { path: 'register', component: Register},
-    {
-      path: 'skills-manager',
-      children: [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: Login },
+  { path: 'profil', component: Profil, canActivate: [authGuardGuard] },
+  { path: 'register', component: Register },
+  {
+    path: 'skills-manager',
+    children: [
       {
-       path: 'categories',
-       loadChildren: () => import('./features/admin/categories/categories.routes')
-        .then(r => r.routes)
+        path: '',
+        redirectTo: 'categories',
+        pathMatch: 'full'
+      },
+      {
+        path: 'categories',
+        loadChildren: () => import('./features/admin/categories/categories.routes')
+          .then(r => r.routes)
       }
-  ]
-}
+    ]
+  },
 ];
