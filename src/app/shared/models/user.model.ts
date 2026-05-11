@@ -8,4 +8,8 @@ export interface UserRegister {
   lastName: string;
   role: string;
 }
+export interface PasswordRequestUpdateDto {
+  currentPassword: string;
+  newPassword: string;
+}
 
