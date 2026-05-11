@@ -1,43 +1,51 @@
 <div class="p-6">
-  <h2 class="text-xl font-bold mb-4">Liste des catégories</h2>
-  <!-- Bouton Ajouter -->
-  <button
-    (click)="goToAdd()"
-    class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition mb-4">
-    Ajouter une catégorie
-  </button>
-  <table class="w-full border-collapse">
-    <thead>
-      <tr class="bg-gray-100">
-        <th class="border px-4 py-2 text-left">Nom</th>
-        <th class="border px-4 py-2 text-left">Description</th>
-        <th class="border px-4 py-2">Actions</th>
-      </tr>
-    </thead>
-    <!-- Liste des catégories -->
-    <tbody>
-      @if (categories.length > 0) {
-        @for (category of categories; track category.id) {
+
+  <!-- Header -->
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold text-gray-800">Liste des catégories</h2>
+    <button
+      (click)="goToAdd()"
+      class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition text-sm">
+      + Ajouter une catégorie
+    </button>
+  </div>
+
+  <!-- Table -->
+  <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+    <table class="w-full">
+      <thead>
+        <tr class="bg-gray-800 text-white">
+          <th class="px-6 py-3 text-left text-sm font-semibold border-r border-gray-600">Nom</th>
+          <th class="px-6 py-3 text-left text-sm font-semibold border-r border-gray-600">Description</th>
+          <th class="px-6 py-3 text-center text-sm font-semibold">Actions</th>
+        </tr>
+      </thead>
+      <!-- Liste des catégories -->
+      <tbody >
+        @if (categories.length > 0) {
+          @for (category of categories; track category.id) {
+            <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
+              <td class="px-6 py-4 text-sm text-gray-800 border-r border-gray-100">{{ category.name }}</td>
+              <td class="px-6 py-4 text-sm text-gray-500 border-r border-gray-100">{{ category.description }}</td>
+              <td class="px-6 py-4 text-center">
+                <button
+                  (click)="goToUpdate(category.id)"
+                  class="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 text-sm transition">
+                  Edit
+                </button>
+              </td>
+            </tr>
+          }
+        } @else {
+          <!-- Aucune catégorie disponible -->
           <tr>
-            <td class="border px-4 py-2">{{ category.name }}</td>
-            <td class="border px-4 py-2">{{ category.description }}</td>
-            <td class="border px-4 py-2 text-center">
-              <button
-                (click)="goToUpdate(category.id)"
-                class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
-                Edit
-              </button>
+            <td colspan="3" class="px-6 py-8 text-center text-gray-400 text-sm">
+              Aucune catégorie disponible.
             </td>
           </tr>
         }
-      } @else {
-        <!-- Aucune catégorie disponible -->
-        <tr>
-          <td colspan="3" class="border px-4 py-2 text-center text-gray-500">
-            Aucune catégorie disponible.
-          </td>
-        </tr>
-      }
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
+
 </div>
