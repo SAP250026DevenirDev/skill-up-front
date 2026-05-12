@@ -1,11 +1,11 @@
-<div class="flex flex-col bg-gray-600 text-white w-64 min-h-screen p-6 gap-4">
+<div class="flex flex-col bg-gray-600 text-white  min-h-screen p-6 gap-4">
 
   <!-- Profil -->
    <div class="flex flex-col items-center gap-2 mb-4">
     <span class="font-bold text-base">{{ lastName }}</span>
     <span class="font-bold text-gray-300 text-base">{{ firstName }}</span>
     <span class="text-gray-400 text-sm">{{ userRole }}</span>
-    <button class="mt-2 border border-white px-4 py-1 rounded hover:bg-gray-600 transition text-sm">
+    <button routerLink="ChangePassword" class="mt-2 border border-white px-4 py-1 rounded hover:bg-gray-600 transition text-sm">
       Change Password
     </button>
   </div>
@@ -19,7 +19,7 @@
   @if (userRole === 'Manager') {
     <a routerLink="/search" class="px-4 py-2 rounded hover:bg-gray-600 transition">Users search</a>
   }
-  @if (userRole === 'Admin') {
+  @if (userRole === 'Administrator') {
     <a routerLink="/skills-manager" class="px-4 py-2 rounded hover:bg-gray-600 transition">Skills Manager</a>
     <a routerLink="/users-manager" class="px-4 py-2 rounded hover:bg-gray-600 transition">Users Manager</a>
   }

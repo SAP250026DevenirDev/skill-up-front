@@ -7,22 +7,23 @@
 </div>
 
   <div class="flex gap-6">
-    @if (userRole === 'Collaborator') {
+    @if (authService.connectedUser()?.role == "Collaborator") {
       <a routerLink="/profil" class="text-white hover:text-blue-400 transition">Profil</a>
       <a routerLink="/skills" class="text-white hover:text-blue-400 transition">Skills Manager</a>
       <a routerLink="/mentoring" class="text-white hover:text-blue-400 transition">Mentorat</a>
     }
 
-    @if (userRole === 'Manager') {
+    @if (authService.connectedUser()?.role == "Manager") {
       <a routerLink="/profil" class="text-white hover:text-blue-400 transition">Profil</a>
       <a routerLink="/search" class="text-white hover:text-blue-400 transition">Search</a>
       <a routerLink="/historic" class="text-white hover:text-blue-400 transition">Historic Skills</a>
     }
 
-    @if (userRole === 'Admin') {
+    @if (authService.connectedUser()?.role == "Administrator") {
       <a routerLink="/profil" class="text-white hover:text-blue-400 transition">Profil</a>
       <a routerLink="/skills-manager" class="text-white hover:text-blue-400 transition">Skills Manager</a>
-      <a routerLink="/users-manager" class="text-white hover:text-blue-400 transition">Users Manager</a>
+      <a routerLink="/users-manager" routerLinkActive="active-tab" class="text-white hover:text-blue-400 transition">Users Manager</a>
+      <!-- <a routerLink="/register" class="text-white hover:text-blue-400 transition">Register</a> -->
     }
   </div>
 

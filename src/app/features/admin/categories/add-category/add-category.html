@@ -1,0 +1,60 @@
+<div class="p-6 flex flex-col items-center" style="height: calc(100vh - 64px);">
+
+  <!-- Intro -->
+  <div class="w-full max-w-2xl mb-6">
+    <h1 class="text-2xl font-bold text-gray-800">Gestion des catégories</h1>
+    <p class="text-gray-500 text-sm mt-1">Remplissez le formulaire pour ajouter une nouvelle catégorie.</p>
+  </div>
+
+  <!-- Card -->
+  <div class="bg-white rounded-2xl shadow-lg p-8 w-full max-w-2xl">
+    
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">
+      Ajouter une catégorie
+    </h2>
+
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Nom -->
+      <div class="mb-5">
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Nom</label>
+        <input
+          formControlName="name"
+          type="text"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 transition"
+          placeholder="Nom de la catégorie"
+        />
+        @if (addForm.get('name')?.invalid && addForm.get('name')?.touched) {
+          <span class="text-red-500 text-xs mt-1 block">Le nom est requis (3-100 caractères)</span>
+        }
+      </div>
+
+      <!-- Description -->
+      <div class="mb-6">
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Description</label>
+        <textarea
+          formControlName="description"
+          rows="4"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 transition resize-none"
+          placeholder="Description de la catégorie"
+        ></textarea>
+      </div>
+
+      <!-- Boutons -->
+      <div class="flex justify-end gap-3">
+        <button
+          type="button"
+          (click)="onCancel()"
+          class="px-5 py-2 rounded-lg border border-gray-300 text-sm text-gray-600 hover:bg-gray-100 transition">
+          Annuler
+        </button>
+        <button
+          type="submit"
+          class="px-5 py-2 rounded-lg bg-gray-800 text-white text-sm hover:bg-gray-600 transition">
+          Ajouter
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

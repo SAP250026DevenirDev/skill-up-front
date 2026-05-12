@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 
@@ -9,14 +9,15 @@ import { AuthService } from '../../../core/services/auth.service';
   styleUrl: './navbar.css'
 })
 export class Navbar implements OnInit {
-  private readonly authService = inject(AuthService);
+  public readonly authService = inject(AuthService);
   private readonly router = inject(Router);
-
-  userRole: string = '';
+  user = this.authService.connectedUser;
+  //userRole = signal<string>('');
 
   ngOnInit(): void {
     // sera connecté au AuthService quand US06 sera terminée
-    this.userRole = 'Collaborator'; // temporaire
+    //this.userRole = 'Collaborator'; // temporaire
+    console.log(this.user()?.role)
   }
 
   logout(): void {
