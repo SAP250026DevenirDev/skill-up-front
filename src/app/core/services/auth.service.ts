@@ -50,6 +50,11 @@ private decodeToken(token: TokenInfo): void {
   this.storage.setLocal<JwtPayload>('payload', payload);//Sauvegarde le token et le payload 
   }
 
+  getRole(): string | null {
+  const user = this.connectedUser(); // On lit la valeur actuelle du Signal
+  return user ? user.role : null;
+}
+
   logout(): void {
     this.connectedUser.set(null);
     this.storage.removeLocal('token');   

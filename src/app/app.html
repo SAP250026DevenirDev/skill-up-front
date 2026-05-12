@@ -1,15 +1,15 @@
 @if(this.authService.isLoggedIn()) {
-  <app-navbar />
 
-  <div class="flex">
+  <app-navbar />
+  <div class="flex  flex-1 overflow-hidden ">
     <app-sidebar />
-    <div class="flex-1" style="height: calc(100vh - 64px); overflow-y: auto;">
+    <div class="flex-1 overflow-auto">
       <router-outlet />
     </div>
   </div>
-} @else {
-  <div class="flex-1">
-    <router-outlet />
-  </div>
 }
-
+@else {
+<div class="flex">
+  <router-outlet />
+</div>
+}

@@ -22,8 +22,8 @@
     @if (authService.connectedUser()?.role == "Administrator") {
       <a routerLink="/profil" class="text-white hover:text-blue-400 transition">Profil</a>
       <a routerLink="/skills-manager" class="text-white hover:text-blue-400 transition">Skills Manager</a>
-      <a routerLink="/users-manager" class="text-white hover:text-blue-400 transition">Users Manager</a>
-      <a routerLink="/register" class="text-white hover:text-blue-400 transition">Register</a>
+      <a routerLink="/users-manager" routerLinkActive="active-tab" class="text-white hover:text-blue-400 transition">Users Manager</a>
+      <!-- <a routerLink="/register" class="text-white hover:text-blue-400 transition">Register</a> -->
     }
   </div>
 
