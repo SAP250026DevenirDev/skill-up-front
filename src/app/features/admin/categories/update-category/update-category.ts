@@ -42,4 +42,8 @@ export class UpdateCategory implements OnInit {
     });
     } 
   }
+
+  onCancel(): void {
+  this.router.navigate(['/skills-manager/categories']);
+}
 }

@@ -28,4 +28,8 @@ export class CategoryList implements OnInit {
   goToUpdate(id: string): void {
     this.router.navigate(['/skills-manager/categories/update', id]);
   }
+
+  goToAdd(): void {
+  this.router.navigate(['/skills-manager/categories/add']);
+  } 
 }
