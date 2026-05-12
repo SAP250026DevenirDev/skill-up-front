@@ -17,9 +17,22 @@ export const routes: Routes = [
       path: 'users-manager',
       component: UsersManagerComponent,
       children: [
+
         { path: '', redirectTo: 'list', pathMatch: 'full' },
         { path: 'list', component: UserListComponent },
         { path: 'register', component: Register },
       ]
     }   
+     ,   
+      /*{
+        path: '',
+        redirectTo: 'categories',
+        pathMatch: 'full'
+      },
+      {
+        path: 'categories',
+        loadChildren: () => import('./features/admin/categories/categories.routes')
+          .then(r => r.routes)
+      }*/
 ];
+
